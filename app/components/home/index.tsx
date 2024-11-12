@@ -422,6 +422,23 @@ export default function Home() {
     getcnt.classList.remove('hidden');
   }
 
+  const exportCSV = () => {
+    let data = generatedKeywords;
+    console.log(data); // ['sdfdsf dfdsf', '435435 dfdsf', 'rêtt dfdsf', '54654654 dfdsf']
+    let csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach(function(rowArray) {
+      let row = rowArray + ',';
+      csvContent += row + "\r\n";
+    });
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "keywords.csv");
+    document.body.appendChild(link); // Required for FF
+    link.click();
+    
+  }
+
   return (
     <>
       {contextHolder}
@@ -685,6 +702,9 @@ export default function Home() {
             <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
             onClick={() => {doAgain()}}
             >Do Again</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
+            onClick={() => {exportCSV()}}
+            >Export</button>
             <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
             onClick={() => {startOver()}}
             >Start Over</button>
