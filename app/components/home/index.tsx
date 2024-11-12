@@ -392,7 +392,7 @@ export default function Home() {
     <>
       {contextHolder}
       <hr className="my-0" />
-      <h2 className="text-3xl font-bold mt-3">Keywords</h2>
+      <h2 className="text-3xl font-bold mt-3">STEP 1: Keywords</h2>
       <section className="flex flex-col gap-4 py-3 md:py-5">
         <h3 className="text-lg font-bold">Keywords</h3>
         <div className="flex flex-wrap gap-2">
@@ -615,7 +615,7 @@ export default function Home() {
         </Modal>
       </section>
 
-      <h2 className="text-3xl font-bold my-3">Organization</h2>
+      <h2 className="text-3xl font-bold my-3">STEP 2: Organization</h2>
       <ReactSortable 
       list={organaization} 
       setList={setOrganization}>
@@ -632,7 +632,7 @@ export default function Home() {
       onClick={() => {generateKeywords()}}
       >Generate</button>
 
-      <h2 className="text-3xl font-bold mt-10 mb-3">Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
+      <h2 className="text-3xl font-bold mt-10 mb-3">RESULTS: Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
       <section className="flex flex-col gap-4 py-3 md:py-5">
         <table className="w-full border border-gray-200">
           <tbody>
