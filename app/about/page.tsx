@@ -8,6 +8,7 @@ export default function AboutPage() {
         My name is Nguyen Pham, I am a software engineer and I love to build
         things.
       </p>
+   
     </div>
   );
 }
