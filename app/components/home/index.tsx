@@ -70,7 +70,7 @@ export default function Home() {
     if (!subKeyword.value) {
       messageApi.open({
         type: 'error',
-        content: 'Please enter a sub keyword',
+        content: 'Please enter a keyword',
       });
       return;
     }
@@ -79,7 +79,7 @@ export default function Home() {
       if (subKeywords.includes(kw)) {
         messageApi.open({
           type: 'error',
-          content: 'This sub keyword already exists',
+          content: 'This keyword already exists',
         });
         return;
       } else {
@@ -110,7 +110,7 @@ export default function Home() {
     if (!state.value) {
       messageApi.open({
         type: 'error',
-        content: 'Please enter a state',
+        content: 'Please enter a keyword',
       });
       return;
     }
@@ -119,7 +119,7 @@ export default function Home() {
       if (states.includes(st)) {
         messageApi.open({
           type: 'error',
-          content: 'This state already exists',
+          content: 'This keyword already exists',
         });
         return;
       } else {
@@ -150,7 +150,7 @@ export default function Home() {
     if (!city.value) {
       messageApi.open({
         type: 'error',
-        content: 'Please enter a city',
+        content: 'Please enter a keyword',
       });
       return;
     }
@@ -159,7 +159,7 @@ export default function Home() {
       if (cities.includes(ct)) {
         messageApi.open({
           type: 'error',
-          content: 'This city already exists',
+          content: 'This keyword already exists',
         });
         return;
       } else {
@@ -190,7 +190,7 @@ export default function Home() {
     if (!addonOneInput.value) {
       messageApi.open({
         type: 'error',
-        content: 'Please enter a addonOne',
+        content: 'Please enter a keyword',
       });
       return;
     }
@@ -199,7 +199,7 @@ export default function Home() {
       if (addonOne.includes(ad1)) {
         messageApi.open({
           type: 'error',
-          content: 'This addonOne already exists',
+          content: 'This keyword already exists',
         });
         return;
       } else {
@@ -230,7 +230,7 @@ export default function Home() {
       if (!addonTwoInput.value) {
         messageApi.open({
           type: 'error',
-          content: 'Please enter a addonTwo',
+          content: 'Please enter a keyword',
         });
         return;
       }
@@ -239,7 +239,7 @@ export default function Home() {
         if (addonTwo.includes(ad2)) {
           messageApi.open({
             type: 'error',
-            content: 'This addonTwo already exists',
+            content: 'This keyword already exists',
           });
           return;
         } else {
@@ -436,7 +436,10 @@ export default function Home() {
     link.setAttribute("download", "keywords.csv");
     document.body.appendChild(link); // Required for FF
     link.click();
-    
+
+  }
+
+  const exportWordPressXML = () => {
   }
 
   return (
@@ -446,7 +449,7 @@ export default function Home() {
       <div id="getcnt">
         <h2 className="text-3xl font-bold mt-3">STEP 1: Keywords</h2>
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">Keywords</h3>
+          <h3 className="text-lg font-bold">Addons 1</h3>
           <div className="flex flex-wrap gap-2">
             {keywords.map((keyword) => (
               <span
@@ -471,19 +474,19 @@ export default function Home() {
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
+          <Modal title="Add new Keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="keyword" 
             name="keyword" 
-            placeholder="Enter keyword"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
         <hr className="my-0" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">Sub Keywords</h3>
+          <h3 className="text-lg font-bold">Addons 2</h3>
           <div className="flex flex-wrap gap-2">
             {subKeywords.map((subKeyword) => (
               <span
@@ -505,22 +508,22 @@ export default function Home() {
               onClick={() => setIsSubKeywordOpen(true)}
               >
               <PlusOutlined className="mr-2" />
-              Add Sub Keyword
+              Add Keyword
             </button>
           </div>
-          <Modal title="Add new sub keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
+          <Modal title="Add new Keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="subKeyword" 
             name="subKeyword" 
-            placeholder="Enter sub keyword"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
         <hr className="my-0" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">States</h3>
+          <h3 className="text-lg font-bold">Addons 3</h3>
           <div className="flex flex-wrap gap-2">
             {states.map((state) => (
               <span
@@ -542,22 +545,22 @@ export default function Home() {
               onClick={() => setIsStateOpen(true)}
               >
               <PlusOutlined className="mr-2" />
-              Add State
+              Add Keyword
             </button>
           </div>
-          <Modal title="Add new state" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
+          <Modal title="Add new Keyword" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="state" 
             name="state" 
-            placeholder="Enter state"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
         <hr className="my-0" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">Cities</h3>
+          <h3 className="text-lg font-bold">Addons 4</h3>
           <div className="flex flex-wrap gap-2">
             {cities.map((city) => (
               <span
@@ -579,22 +582,22 @@ export default function Home() {
               onClick={() => setIsCityOpen(true)}
               >
               <PlusOutlined className="mr-2" />
-              Add City
+              Add Keyword
             </button>
           </div>
-          <Modal title="Add new city" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
+          <Modal title="Add new Keyword" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="city" 
             name="city" 
-            placeholder="Enter city"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
         <hr className="my-0" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">Addons 1</h3>
+          <h3 className="text-lg font-bold">Addons 5</h3>
           <div className="flex flex-wrap gap-2">
             {addonOne.map((ad1) => (
               <span
@@ -616,22 +619,22 @@ export default function Home() {
               onClick={() => setIsAddonOneOpen(true)}
               >
               <PlusOutlined className="mr-2" />
-              Add Addon
+              Add Keyword
             </button>
           </div>
-          <Modal title="Add new addon" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
+          <Modal title="Add new Keyword" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="addonOne" 
             name="addonOne" 
-            placeholder="Enter addon"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
         <hr className="my-0" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
-          <h3 className="text-lg font-bold">Addons 2</h3>
+          <h3 className="text-lg font-bold">Addons 6</h3>
           <div className="flex flex-wrap gap-2">
             {addonTwo.map((ad2) => (
               <span
@@ -653,16 +656,16 @@ export default function Home() {
               onClick={() => setIsAddonTwoOpen(true)}
               >
               <PlusOutlined className="mr-2" />
-              Add Addon
+              Add Keyword
             </button>
           </div>
-          <Modal title="Add new addon" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
+          <Modal title="Add new Keyword" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
             <input 
             type="text" 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="addonTwo" 
             name="addonTwo" 
-            placeholder="Enter addon"
+            placeholder="Enter Keyword"
             />
           </Modal>
         </section>
@@ -674,7 +677,7 @@ export default function Home() {
           {organaization.map((item) => (
             <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center dark:bg-gray-800">
               <MenuOutlined className="mr-2"/>
-              {item.name}
+              Addons {item.id}
             </div>
           ))}
         </ReactSortable>
@@ -705,6 +708,9 @@ export default function Home() {
             <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
             onClick={() => {exportCSV()}}
             >Export</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
+            onClick={() => {exportWordPressXML()}}
+            >Export WordPress XML</button>
             <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
             onClick={() => {startOver()}}
             >Start Over</button>
