@@ -500,7 +500,66 @@ export default function Home() {
 
   }
 
+  const [file , setFile] = useState<any>();
+  const replaceLIFT = (str: string) => {
+    return str.toString()
+        .replace(/"/gi, "&#34;")
+        .replace(/'/gi, "&#39;")
+        .replace(/\n/gi, '')
+        .replace(/>\s+</g, "><")
+        .replace(/\n/g, "")
+        .replace(/[\t ]+\</g, "<")
+        .replace(/\>[\t ]+\</g, "><")
+        .replace(/\>[\t ]+$/g, ">")
+  }
+  const unReplaceLIFT = (str: string) => {
+    return str.toString().replace(/&#34;/gi, "\"").replace(/&#39;/gi, "'")
+}
+
+  const loadCSVFileAsText = (file: any) => {
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = (e) => {
+      const text = reader.result;
+      setFile(text);
+    }
+  }
+
   const exportWordPressXML = () => {
+    // Check if the file already exists
+    if (!file) {
+      messageApi.open({
+        type: 'error',
+        content: 'Please upload a file',
+      });
+      return;
+    }
+    let nel = generatedKeywords;
+    let nst = ''
+    let arrayDone = []
+    let m = replaceLIFT(file);
+    let dochange = m.replace(/<item>(.*?)<\/item>/gi, '___LIFTCHANGE___')
+    let matchResult = m.match(/<item>(.*?)<\/item>/gi);
+    let result = matchResult ? matchResult.map(function (val) { return val; }) : [];
+    for (let index = 0; index < result.length; index++) {
+        nst += '___LIFTCHANGE___'
+    }
+    for (let gmc = 0; gmc < nel.length; gmc++) {
+        const id = Math.floor(Math.random() * 1000000000);
+        if(nel[gmc] && nel[gmc].length>1) {
+            arrayDone.push(result[0].replace(/(___REPLACE___|___replace___)/gi, nel[gmc].trim()).replace(/<wp:post_id>(.*?)<\/wp:post_id>/gi, '<wp:post_id>'+id+'</wp:post_id>'))
+        }
+    }
+    let t = dochange.replace(nst, arrayDone.join(""))
+    let text = unReplaceLIFT(t);
+    let filename = "LIFT_KW_LIST_" + new Date().getTime() + ".xml";
+    // Download the file
+    let blob = new Blob([text], { type: 'text/xml' });
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
   }
 
   return (
@@ -793,13 +852,24 @@ export default function Home() {
             <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
             onClick={() => {exportCSV()}}
             >Export</button>
-            {/* <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
-            onClick={() => {exportWordPressXML()}}
-            >Export WordPress XML</button> */}
             <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
             onClick={() => {startOver()}}
             >Start Over</button>
           </div>
+          <div className="po">
+          {/* Upload XML */}
+
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" htmlFor="file_input">Upload file</label>
+          <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" accept=".xml" onChange={(e) => { if (e.target.files) loadCSVFileAsText(e.target.files[0]); }} />
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">XML file.</p>
+
+          <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
+            onClick={() => {exportWordPressXML()}}
+            >Export WordPress XML</button>
+          </div>
+          <p className="mt-2"><strong>Code Key:</strong> <code className="a">___REPLACE___</code>, <code className="a">___REPLACE_A___</code>, <code className="a">___REPLACE_B___</code>, <code className="a">___REPLACE_C___</code>, <code className="a">___REPLACE_D___</code>, <code className="a">___REPLACE_E___</code>
+          </p>
+
           <div className="py-3">
           <table className="w-full border border-gray-200 dark:border-gray-700">
             <tbody>
