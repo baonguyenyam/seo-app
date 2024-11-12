@@ -606,8 +606,15 @@ export default function Home() {
     ];
 
     for (let i = 0; i < arr.length; i++) {
+      let id = Math.floor(Math.random() * 1000000000);
+
       m = m.replace(new RegExp(arr[i], "g"), nel[i]);
+      m = m.replace(
+        /<wp:post_id>(.*?)<\/wp:post_id>/gi,
+        "<wp:post_id>" + id + "</wp:post_id>",
+      );
     }
+
     let text = unReplaceLIFT(m);
     // let nst = "";
     // let arrayDone = [];
