@@ -17,10 +17,10 @@ export default function Contact() {
 				email: "admin@nguyenpham.pro",
 				from: "Nguyen Pham Bot <bot@nguyenpham.pro>",
 				subject: "New contact from web!",
-				content: `First Name: ${formData.get("firstName")}\n\n
-				  Last Name: ${formData.get("lastName")}\n\n
-				  Email: ${formData.get("Email")}\n\n
-				  Phone: ${formData.get("Phone")}\n\n
+				content: `First Name: ${formData.get("firstName")}<br />
+				  Last Name: ${formData.get("lastName")}<br />
+				  Email: ${formData.get("Email")}<br />
+				  Phone: ${formData.get("Phone")}<br />
 				  Description: ${formData.get("Description")}`,
 			});
 			router.push("/");
