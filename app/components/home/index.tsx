@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { PlusOutlined, CloseOutlined, MenuOutlined } from '@ant-design/icons';
 import { Modal, Popconfirm, message } from "antd";
 import { ReactSortable } from "react-sortablejs";
@@ -11,6 +11,43 @@ interface ItemType {
 }
 
 export default function Home() {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef2 = useRef<HTMLInputElement>(null);
+  const inputRef3 = useRef<HTMLInputElement>(null);
+  const inputRef4 = useRef<HTMLInputElement>(null);
+  const inputRef5 = useRef<HTMLInputElement>(null);
+  const inputRef6 = useRef<HTMLInputElement>(null);
+  const focus = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+  const focus2 = () => {
+    if (inputRef2.current) {
+      inputRef2.current.focus();
+    }
+  };
+  const focus3 = () => {
+    if (inputRef3.current) {
+      inputRef3.current.focus();
+    }
+  };
+  const focus4 = () => {
+    if (inputRef4.current) {
+      inputRef4.current.focus();
+    }
+  };
+  const focus5 = () => {
+    if (inputRef5.current) {
+      inputRef5.current.focus();
+    }
+  };
+  const focus6 = () => {
+    if (inputRef6.current) {
+      inputRef6.current.focus();
+    }
+  };
+
   const [messageApi, contextHolder] = message.useMessage();
   // Main Keywords
   const [keywordOpen, setIsKeywordOpen] = useState(false);
@@ -18,6 +55,10 @@ export default function Home() {
   const handleKeywordOk = (e: any) => {
     submitFormKeyword();
     setIsKeywordOpen(false);
+  }
+  const openModalKeyword = () => {
+    setIsKeywordOpen(true);
+    setTimeout(focus, 100);
   }
   const handleKeywordCancel = () => {
     const keyword = document.getElementById('keyword') as HTMLInputElement;
@@ -59,6 +100,10 @@ export default function Home() {
     submitFormSubKeyword();
     setIsSubKeywordOpen(false);
   }
+  const openModalSubKeyword = () => {
+    setIsSubKeywordOpen(true);
+    setTimeout(focus2, 100);
+  }
   const handleSubKeywordCancel = () => {
     const subKeyword = document.getElementById('subKeyword') as HTMLInputElement;
     subKeyword.value = '';
@@ -98,6 +143,10 @@ export default function Home() {
   const handleStateOk = (e: any) => {
     submitFormState();
     setIsStateOpen(false);
+  }
+  const openModalState = () => {
+    setIsStateOpen(true);
+    setTimeout(focus3, 100);
   }
   const handleStateCancel = () => {
     const state = document.getElementById('state') as HTMLInputElement;
@@ -139,6 +188,10 @@ export default function Home() {
     submitFormCity();
     setIsCityOpen(false);
   }
+  const openModalCity = () => {
+    setIsCityOpen(true);
+    setTimeout(focus4, 100);
+  }
   const handleCityCancel = () => {
     const city = document.getElementById('city') as HTMLInputElement;
     city.value = '';
@@ -179,6 +232,10 @@ export default function Home() {
     submitFormAddonOne();
     setIsAddonOneOpen(false);
   }
+  const openModalAddonOne = () => {
+    setIsAddonOneOpen(true);
+    setTimeout(focus5, 100);
+  }
   const handleAddonOneCancel = () => {
     const addonOne = document.getElementById('addonOne') as HTMLInputElement;
     addonOne.value = '';
@@ -218,6 +275,10 @@ export default function Home() {
   const handleAddonTwoOk = (e: any) => {
     submitFormAddonTwo();
     setIsAddonTwoOpen(false);
+  }
+  const openModalAddonTwo = () => {
+    setIsAddonTwoOpen(true);
+    setTimeout(focus6, 100);
   }
   const handleAddonTwoCancel = () => {
     const addonTwo = document.getElementById('addonTwo') as HTMLInputElement;
@@ -468,15 +529,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsKeywordOpen(true)}
+              onClick={() => openModalKeyword()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
+          <Modal title="Add new Keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            type="text"
+            ref={inputRef} 
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="keyword" 
             name="keyword" 
@@ -505,15 +567,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsSubKeywordOpen(true)}
+              onClick={() => openModalSubKeyword()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
+          <Modal title="Add new Keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            ref={inputRef2} 
+            type="text"
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="subKeyword" 
             name="subKeyword" 
@@ -542,15 +605,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsStateOpen(true)}
+              onClick={() => openModalState()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
+          <Modal title="Add new Keyword" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            ref={inputRef3}
+            type="text"
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="state" 
             name="state" 
@@ -579,15 +643,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsCityOpen(true)}
+              onClick={() => openModalCity()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
+          <Modal title="Add new Keyword" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            ref={inputRef4}
+            type="text"
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="city" 
             name="city" 
@@ -616,15 +681,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsAddonOneOpen(true)}
+              onClick={() => openModalAddonOne()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
+          <Modal title="Add new Keyword" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            ref={inputRef5}
+            type="text"
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="addonOne" 
             name="addonOne" 
@@ -653,15 +719,16 @@ export default function Home() {
               </span>
             ))}
             <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-              onClick={() => setIsAddonTwoOpen(true)}
+              onClick={() => openModalAddonTwo()}
               >
               <PlusOutlined className="mr-2" />
               Add Keyword
             </button>
           </div>
-          <Modal title="Add new Keyword" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
+          <Modal title="Add new Keyword" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel} keyboard={false} maskClosable={false} centered>
             <input 
-            type="text" 
+            ref={inputRef6}
+            type="text"
             className="w-full border border-gray-200 rounded p-2 bg-white" 
             id="addonTwo" 
             name="addonTwo" 
