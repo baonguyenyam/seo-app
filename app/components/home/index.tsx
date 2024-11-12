@@ -659,7 +659,7 @@ export default function Home() {
   return (
     <>
       {contextHolder}
-      <hr className="my-0" />
+      <hr className="my-0 dark:opacity-10" />
       <div id="getcnt">
         <h2 className="text-3xl font-bold mt-3">STEP 1: Keywords</h2>
         <section className="flex flex-col gap-4 py-3 md:py-5">
@@ -713,7 +713,7 @@ export default function Home() {
             />
           </Modal>
         </section>
-        <hr className="my-0" />
+        <hr className="my-0 dark:opacity-10" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
           <h3 className="text-lg font-bold">Addons 2</h3>
           <div className="flex flex-wrap gap-2">
@@ -765,7 +765,7 @@ export default function Home() {
             />
           </Modal>
         </section>
-        <hr className="my-0" />
+        <hr className="my-0 dark:opacity-10" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
           <h3 className="text-lg font-bold">Addons 3</h3>
           <div className="flex flex-wrap gap-2">
@@ -817,7 +817,7 @@ export default function Home() {
             />
           </Modal>
         </section>
-        <hr className="my-0" />
+        <hr className="my-0 dark:opacity-10" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
           <h3 className="text-lg font-bold">Addons 4</h3>
           <div className="flex flex-wrap gap-2">
@@ -869,7 +869,7 @@ export default function Home() {
             />
           </Modal>
         </section>
-        <hr className="my-0" />
+        <hr className="my-0 dark:opacity-10" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
           <h3 className="text-lg font-bold">Addons 5</h3>
           <div className="flex flex-wrap gap-2">
@@ -921,7 +921,7 @@ export default function Home() {
             />
           </Modal>
         </section>
-        <hr className="my-0" />
+        <hr className="my-0 dark:opacity-10" />
         <section className="flex flex-col gap-4 py-3 md:py-5">
           <h3 className="text-lg font-bold">Addons 6</h3>
           <div className="flex flex-wrap gap-2">
