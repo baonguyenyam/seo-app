@@ -391,267 +391,307 @@ export default function Home() {
 
     let result = returnCombinations(get_keywords, get_subKeywords, get_states, get_cities, get_addonOne, get_addonTwo);
     setGeneratedKeywords(result);
+
+    const results = document.getElementById('results') as HTMLElement;
+    results.classList.remove('hidden');
+
+    const getcnt = document.getElementById('getcnt') as HTMLElement;
+    getcnt.classList.add('hidden');
+
+  }
+
+  const startOver = () => {
+    setKeywords([]);
+    setSubKeywords([]);
+    setStates([]);
+    setCities([]);
+    setAddonOne([]);
+    setAddonTwo([]);
+    setGeneratedKeywords([]);
+    const results = document.getElementById('results') as HTMLElement;
+    results.classList.add('hidden');
+
+    const getcnt = document.getElementById('getcnt') as HTMLElement;
+    getcnt.classList.remove('hidden');
+  }
+  const doAgain = () => {
+    const results = document.getElementById('results') as HTMLElement;
+    results.classList.add('hidden');
+
+    const getcnt = document.getElementById('getcnt') as HTMLElement;
+    getcnt.classList.remove('hidden');
   }
 
   return (
     <>
       {contextHolder}
       <hr className="my-0" />
-      <h2 className="text-3xl font-bold mt-3">STEP 1: Keywords</h2>
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">Keywords</h3>
-        <div className="flex flex-wrap gap-2">
-          {keywords.map((keyword) => (
-            <span
-              key={keyword}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {keyword}
-              <Popconfirm
-                title="Are you sure to delete this keyword?"
-                onConfirm={() => removeKeyword(keyword)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsKeywordOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add Keyword
-          </button>
-        </div>
-        <Modal title="Add new keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="keyword" 
-          name="keyword" 
-          placeholder="Enter keyword"
-          />
-        </Modal>
-      </section>
-      <hr className="my-0" />
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">Sub Keywords</h3>
-        <div className="flex flex-wrap gap-2">
-          {subKeywords.map((subKeyword) => (
-            <span
-              key={subKeyword}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {subKeyword}
-              <Popconfirm
-                title="Are you sure to delete this sub keyword?"
-                onConfirm={() => removeSubKeyword(subKeyword)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsSubKeywordOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add Sub Keyword
-          </button>
-        </div>
-        <Modal title="Add new sub keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="subKeyword" 
-          name="subKeyword" 
-          placeholder="Enter sub keyword"
-          />
-        </Modal>
-      </section>
-      <hr className="my-0" />
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">States</h3>
-        <div className="flex flex-wrap gap-2">
-          {states.map((state) => (
-            <span
-              key={state}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {state}
-              <Popconfirm
-                title="Are you sure to delete this state?"
-                onConfirm={() => removeState(state)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsStateOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add State
-          </button>
-        </div>
-        <Modal title="Add new state" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="state" 
-          name="state" 
-          placeholder="Enter state"
-          />
-        </Modal>
-      </section>
-      <hr className="my-0" />
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">Cities</h3>
-        <div className="flex flex-wrap gap-2">
-          {cities.map((city) => (
-            <span
-              key={city}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {city}
-              <Popconfirm
-                title="Are you sure to delete this city?"
-                onConfirm={() => removeCity(city)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsCityOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add City
-          </button>
-        </div>
-        <Modal title="Add new city" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="city" 
-          name="city" 
-          placeholder="Enter city"
-          />
-        </Modal>
-      </section>
-      <hr className="my-0" />
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">Addons 1</h3>
-        <div className="flex flex-wrap gap-2">
-          {addonOne.map((ad1) => (
-            <span
-              key={ad1}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {ad1}
-              <Popconfirm
-                title="Are you sure to delete this addonOne?"
-                onConfirm={() => removeAddonOne(ad1)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsAddonOneOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add Addon
-          </button>
-        </div>
-        <Modal title="Add new addon" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="addonOne" 
-          name="addonOne" 
-          placeholder="Enter addon"
-          />
-        </Modal>
-      </section>
-      <hr className="my-0" />
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <h3 className="text-lg font-bold">Addons 2</h3>
-        <div className="flex flex-wrap gap-2">
-          {addonTwo.map((ad2) => (
-            <span
-              key={ad2}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            >
-              {ad2}
-              <Popconfirm
-                title="Are you sure to delete this addonTwo?"
-                onConfirm={() => removeAddonTwo(ad2)}
-                okText="Yes"
-                cancelText="No"
-              >
-              <CloseOutlined className="ml-2"/>
-              </Popconfirm>
-            </span>
-          ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
-            onClick={() => setIsAddonTwoOpen(true)}
-            >
-            <PlusOutlined className="mr-2" />
-            Add Addon
-          </button>
-        </div>
-        <Modal title="Add new addon" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
-          <input 
-          type="text" 
-          className="w-full border border-gray-200 rounded p-2 bg-white" 
-          id="addonTwo" 
-          name="addonTwo" 
-          placeholder="Enter addon"
-          />
-        </Modal>
-      </section>
-
-      <h2 className="text-3xl font-bold my-3">STEP 2: Organization</h2>
-      <ReactSortable 
-      list={organaization} 
-      setList={setOrganization}>
-        {organaization.map((item) => (
-          <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center dark:bg-gray-800">
-            <MenuOutlined className="mr-2"/>
-            {item.name}
-          </div>
-        ))}
-      </ReactSortable>
-
-
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
-      onClick={() => {generateKeywords()}}
-      >Generate</button>
-
-      <h2 className="text-3xl font-bold mt-10 mb-3">RESULTS: Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
-      <section className="flex flex-col gap-4 py-3 md:py-5">
-        <table className="w-full border border-gray-200 dark:border-gray-700">
-          <tbody>
-            {generatedKeywords.map((keyword) => (
-              <tr
+      <div id="getcnt">
+        <h2 className="text-3xl font-bold mt-3">STEP 1: Keywords</h2>
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">Keywords</h3>
+          <div className="flex flex-wrap gap-2">
+            {keywords.map((keyword) => (
+              <span
                 key={keyword}
-                className="border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
               >
-                <td className="px-3 py-1">{keyword}</td>
-              </tr>
+                {keyword}
+                <Popconfirm
+                  title="Are you sure to delete this keyword?"
+                  onConfirm={() => removeKeyword(keyword)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
             ))}
-          </tbody>
-        </table>
-      </section>
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsKeywordOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add Keyword
+            </button>
+          </div>
+          <Modal title="Add new keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="keyword" 
+            name="keyword" 
+            placeholder="Enter keyword"
+            />
+          </Modal>
+        </section>
+        <hr className="my-0" />
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">Sub Keywords</h3>
+          <div className="flex flex-wrap gap-2">
+            {subKeywords.map((subKeyword) => (
+              <span
+                key={subKeyword}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              >
+                {subKeyword}
+                <Popconfirm
+                  title="Are you sure to delete this sub keyword?"
+                  onConfirm={() => removeSubKeyword(subKeyword)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
+            ))}
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsSubKeywordOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add Sub Keyword
+            </button>
+          </div>
+          <Modal title="Add new sub keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="subKeyword" 
+            name="subKeyword" 
+            placeholder="Enter sub keyword"
+            />
+          </Modal>
+        </section>
+        <hr className="my-0" />
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">States</h3>
+          <div className="flex flex-wrap gap-2">
+            {states.map((state) => (
+              <span
+                key={state}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              >
+                {state}
+                <Popconfirm
+                  title="Are you sure to delete this state?"
+                  onConfirm={() => removeState(state)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
+            ))}
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsStateOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add State
+            </button>
+          </div>
+          <Modal title="Add new state" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="state" 
+            name="state" 
+            placeholder="Enter state"
+            />
+          </Modal>
+        </section>
+        <hr className="my-0" />
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">Cities</h3>
+          <div className="flex flex-wrap gap-2">
+            {cities.map((city) => (
+              <span
+                key={city}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              >
+                {city}
+                <Popconfirm
+                  title="Are you sure to delete this city?"
+                  onConfirm={() => removeCity(city)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
+            ))}
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsCityOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add City
+            </button>
+          </div>
+          <Modal title="Add new city" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="city" 
+            name="city" 
+            placeholder="Enter city"
+            />
+          </Modal>
+        </section>
+        <hr className="my-0" />
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">Addons 1</h3>
+          <div className="flex flex-wrap gap-2">
+            {addonOne.map((ad1) => (
+              <span
+                key={ad1}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              >
+                {ad1}
+                <Popconfirm
+                  title="Are you sure to delete this addonOne?"
+                  onConfirm={() => removeAddonOne(ad1)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
+            ))}
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsAddonOneOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add Addon
+            </button>
+          </div>
+          <Modal title="Add new addon" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="addonOne" 
+            name="addonOne" 
+            placeholder="Enter addon"
+            />
+          </Modal>
+        </section>
+        <hr className="my-0" />
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <h3 className="text-lg font-bold">Addons 2</h3>
+          <div className="flex flex-wrap gap-2">
+            {addonTwo.map((ad2) => (
+              <span
+                key={ad2}
+                className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              >
+                {ad2}
+                <Popconfirm
+                  title="Are you sure to delete this addonTwo?"
+                  onConfirm={() => removeAddonTwo(ad2)}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <CloseOutlined className="ml-2"/>
+                </Popconfirm>
+              </span>
+            ))}
+            <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
+              onClick={() => setIsAddonTwoOpen(true)}
+              >
+              <PlusOutlined className="mr-2" />
+              Add Addon
+            </button>
+          </div>
+          <Modal title="Add new addon" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
+            <input 
+            type="text" 
+            className="w-full border border-gray-200 rounded p-2 bg-white" 
+            id="addonTwo" 
+            name="addonTwo" 
+            placeholder="Enter addon"
+            />
+          </Modal>
+        </section>
+
+        <h2 className="text-3xl font-bold my-3">STEP 2: Organization</h2>
+        <ReactSortable 
+        list={organaization} 
+        setList={setOrganization}>
+          {organaization.map((item) => (
+            <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center dark:bg-gray-800">
+              <MenuOutlined className="mr-2"/>
+              {item.name}
+            </div>
+          ))}
+        </ReactSortable>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
+        onClick={() => {generateKeywords()}}
+        >Generate</button>
+      </div>
+
+      <div id="results" className="hidden">
+        <h2 className="text-3xl font-bold mt-10 mb-3">RESULTS: Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
+        <section className="flex flex-col gap-4 py-3 md:py-5">
+          <table className="w-full border border-gray-200 dark:border-gray-700">
+            <tbody>
+              {generatedKeywords.map((keyword) => (
+                <tr
+                  key={keyword}
+                  className="border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+                >
+                  <td className="px-3 py-1">{keyword}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div className="flex space-x-2">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
+            onClick={() => {doAgain()}}
+            >Do Again</button>
+            <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
+            onClick={() => {startOver()}}
+            >Start Over</button>
+          </div>
+        </section>
+      </div>
+
 
     </>
   );
