@@ -5,6 +5,11 @@ import { PlusOutlined, CloseOutlined, MenuOutlined } from '@ant-design/icons';
 import { Modal, Popconfirm, message } from "antd";
 import { ReactSortable } from "react-sortablejs";
 
+interface ItemType {
+  id: number;
+  name: string;
+}
+
 export default function Home() {
   const [messageApi, contextHolder] = message.useMessage();
   // Main Keywords
@@ -249,13 +254,13 @@ export default function Home() {
   }
 
   //////////////////////////////////////////
-  const [organaization, setOrganization] = useState([
-      'keyword',
-      'subKeywords',
-      'state',
-      'cities',
-      'addonOne',
-      'addonTwo'
+  const [organaization, setOrganization] = useState<ItemType[]>([
+      { id: 1, name: 'keyword' },
+      { id: 2, name: 'subKeywords' },
+      { id: 3, name: 'state' },
+      { id: 4, name: 'cities' },
+      { id: 5, name: 'addonOne' },
+      { id: 6, name: 'addonTwo' },
     ]
   );
 
@@ -300,87 +305,87 @@ export default function Home() {
     let get_cities = []
     let get_addonOne = []
     let get_addonTwo = []
-    if(organaization[0].toString() === 'keyword') {
+    if(organaization[0].name === 'keyword') {
       get_keywords = keywords;
-    } else if(organaization[0].toString() === 'subKeywords') {
+    } else if(organaization[0].name === 'subKeywords') {
       get_keywords = subKeywords;
-    } else if(organaization[0].toString() === 'state') {
+    } else if(organaization[0].name === 'state') {
       get_keywords = states;
-    } else if(organaization[0].toString() === 'cities') {
+    } else if(organaization[0].name === 'cities') {
       get_keywords = cities;
-    } else if(organaization[0].toString() === 'addonOne') {
+    } else if(organaization[0].name === 'addonOne') {
       get_keywords = addonOne;
-    } else if(organaization[0].toString() === 'addonTwo') {
+    } else if(organaization[0].name === 'addonTwo') {
       get_keywords = addonTwo;
     }
     // Sub Keywords
-    if(organaization[1].toString() === 'keyword') {
+    if(organaization[1].name === 'keyword') {
       get_subKeywords = keywords;
-    } else if(organaization[1].toString() === 'subKeywords') {
+    } else if(organaization[1].name === 'subKeywords') {
       get_subKeywords = subKeywords;
-    } else if(organaization[1].toString() === 'state') {
+    } else if(organaization[1].name === 'state') {
       get_subKeywords = states;
-    } else if(organaization[1].toString() === 'cities') {
+    } else if(organaization[1].name === 'cities') {
       get_subKeywords = cities;
-    } else if(organaization[1].toString() === 'addonOne') {
+    } else if(organaization[1].name === 'addonOne') {
       get_subKeywords = addonOne;
-    } else if(organaization[1].toString() === 'addonTwo') {
+    } else if(organaization[1].name === 'addonTwo') {
       get_subKeywords = addonTwo;
     }
     // States
-    if(organaization[2].toString() === 'keyword') {
+    if(organaization[2].name === 'keyword') {
       get_states = keywords;
-    } else if(organaization[2].toString() === 'subKeywords') {
+    } else if(organaization[2].name === 'subKeywords') {
       get_states = subKeywords;
-    } else if(organaization[2].toString() === 'state') {
+    } else if(organaization[2].name === 'state') {
       get_states = states;
-    } else if(organaization[2].toString() === 'cities') {
+    } else if(organaization[2].name === 'cities') {
       get_states = cities;
-    } else if(organaization[2].toString() === 'addonOne') {
+    } else if(organaization[2].name === 'addonOne') {
       get_states = addonOne;
-    } else if(organaization[2].toString() === 'addonTwo') {
+    } else if(organaization[2].name === 'addonTwo') {
       get_states = addonTwo;
     }
     // Cities
-    if(organaization[3].toString() === 'keyword') {
+    if(organaization[3].name === 'keyword') {
       get_cities = keywords;
-    } else if(organaization[3].toString() === 'subKeywords') {
+    } else if(organaization[3].name === 'subKeywords') {
       get_cities = subKeywords;
-    } else if(organaization[3].toString() === 'state') {
+    } else if(organaization[3].name === 'state') {
       get_cities = states;
-    } else if(organaization[3].toString() === 'cities') {
+    } else if(organaization[3].name === 'cities') {
       get_cities = cities;
-    } else if(organaization[3].toString() === 'addonOne') {
+    } else if(organaization[3].name === 'addonOne') {
       get_cities = addonOne;
-    } else if(organaization[3].toString() === 'addonTwo') {
+    } else if(organaization[3].name === 'addonTwo') {
       get_cities = addonTwo;
     }
     // AddonOne
-    if(organaization[4].toString() === 'keyword') {
+    if(organaization[4].name === 'keyword') {
       get_addonOne = keywords;
-    } else if(organaization[4].toString() === 'subKeywords') {
+    } else if(organaization[4].name === 'subKeywords') {
       get_addonOne = subKeywords;
-    } else if(organaization[4].toString() === 'state') {
+    } else if(organaization[4].name === 'state') {
       get_addonOne = states;
-    } else if(organaization[4].toString() === 'cities') {
+    } else if(organaization[4].name === 'cities') {
       get_addonOne = cities;
-    } else if(organaization[4].toString() === 'addonOne') {
+    } else if(organaization[4].name === 'addonOne') {
       get_addonOne = addonOne;
-    } else if(organaization[4].toString() === 'addonTwo') {
+    } else if(organaization[4].name === 'addonTwo') {
       get_addonOne = addonTwo;
     }
     // AddonTwo
-    if(organaization[5].toString() === 'keyword') {
+    if(organaization[5].name === 'keyword') {
       get_addonTwo = keywords;
-    } else if(organaization[5].toString() === 'subKeywords') {
+    } else if(organaization[5].name === 'subKeywords') {
       get_addonTwo = subKeywords;
-    } else if(organaization[5].toString() === 'state') {
+    } else if(organaization[5].name === 'state') {
       get_addonTwo = states;
-    } else if(organaization[5].toString() === 'cities') {
+    } else if(organaization[5].name === 'cities') {
       get_addonTwo = cities;
-    } else if(organaization[5].toString() === 'addonOne') {
+    } else if(organaization[5].name === 'addonOne') {
       get_addonTwo = addonOne;
-    } else if(organaization[5].toString() === 'addonTwo') {
+    } else if(organaization[5].name === 'addonTwo') {
       get_addonTwo = addonTwo;
     }
 
@@ -620,9 +625,9 @@ export default function Home() {
       list={organaization} 
       setList={setOrganization}>
         {organaization.map((item) => (
-          <div key={item} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center">
+          <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center">
             <MenuOutlined className="mr-2"/>
-            {item}
+            {item.name}
           </div>
         ))}
       </ReactSortable>
