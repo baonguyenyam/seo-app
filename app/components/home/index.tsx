@@ -594,36 +594,50 @@ export default function Home() {
       return;
     }
     let nel = generatedKeywords;
-    let nst = "";
-    let arrayDone = [];
+
     let m = replaceLIFT(file);
-    let dochange = m.replace(/<item>(.*?)<\/item>/gi, "___LIFTCHANGE___");
-    let matchResult = m.match(/<item>(.*?)<\/item>/gi);
-    let result = matchResult
-      ? matchResult.map(function (val) {
-          return val;
-        })
-      : [];
+    let arr = [
+      "___REPLACE___",
+      "___REPLACE_A___",
+      "___REPLACE_B___",
+      "___REPLACE_C___",
+      "___REPLACE_D___",
+      "___REPLACE_E___",
+    ];
 
-    for (let index = 0; index < result.length; index++) {
-      nst += "___LIFTCHANGE___";
+    for (let i = 0; i < arr.length; i++) {
+      m = m.replace(new RegExp(arr[i], "g"), nel[i]);
     }
-    for (let gmc = 0; gmc < nel.length; gmc++) {
-      const id = Math.floor(Math.random() * 1000000000);
+    let text = unReplaceLIFT(m);
+    // let nst = "";
+    // let arrayDone = [];
+    // let m = replaceLIFT(file);
+    // let dochange = m.replace(/<item>(.*?)<\/item>/gi, "___LIFTCHANGE___");
+    // let matchResult = m.match(/<item>(.*?)<\/item>/gi);
+    // let result = matchResult
+    //   ? matchResult.map(function (val) {
+    //       return val;
+    //     })
+    //   : [];
 
-      if (nel[gmc] && nel[gmc].length > 1) {
-        arrayDone.push(
-          result[0]
-            .replace(/(___REPLACE___|___replace___)/gi, nel[gmc].trim())
-            .replace(
-              /<wp:post_id>(.*?)<\/wp:post_id>/gi,
-              "<wp:post_id>" + id + "</wp:post_id>",
-            ),
-        );
-      }
-    }
-    let t = dochange.replace(nst, arrayDone.join(""));
-    let text = unReplaceLIFT(t);
+    // for (let index = 0; index < result.length; index++) {
+    //   nst += "___LIFTCHANGE___";
+    // }
+    // for (let gmc = 0; gmc < nel.length; gmc++) {
+    //   const id = Math.floor(Math.random() * 1000000000);
+
+    //   if (nel[gmc] && nel[gmc].length > 1) {
+    //     arrayDone.push(
+    //       result[0]
+    //         .replace(/(___REPLACE___|___replace___)/gi, nel[gmc].trim())
+    //         .replace(
+    //           /<wp:post_id>(.*?)<\/wp:post_id>/gi,
+    //           "<wp:post_id>" + id + "</wp:post_id>",
+    //         ),
+    //     );
+    //   }
+    // }
+    // let t = dochange.replace(nst, arrayDone.join(""));
     let filename = "LIFT_KW_LIST_" + new Date().getTime() + ".xml";
     // Download the file
     let blob = new Blob([text], { type: "text/xml" });
@@ -1042,7 +1056,7 @@ export default function Home() {
               Export WordPress XML
             </button>
           </div>
-          <p className="mt-2">
+          <p className="mt-2 text-sm opacity-60">
             <strong>Code Key:</strong> <code className="a">___REPLACE___</code>,{" "}
             <code className="a">___REPLACE_A___</code>,{" "}
             <code className="a">___REPLACE_B___</code>,{" "}
