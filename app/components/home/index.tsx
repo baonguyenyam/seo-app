@@ -404,7 +404,7 @@ export default function Home() {
           {keywords.map((keyword) => (
             <span
               key={keyword}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {keyword}
               <Popconfirm
@@ -417,7 +417,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsKeywordOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -427,7 +427,7 @@ export default function Home() {
         <Modal title="Add new keyword" open={keywordOpen} onOk={handleKeywordOk} onCancel={handleKeywordCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="keyword" 
           name="keyword" 
           placeholder="Enter keyword"
@@ -441,7 +441,7 @@ export default function Home() {
           {subKeywords.map((subKeyword) => (
             <span
               key={subKeyword}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {subKeyword}
               <Popconfirm
@@ -454,7 +454,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsSubKeywordOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -464,7 +464,7 @@ export default function Home() {
         <Modal title="Add new sub keyword" open={subKeywordOpen} onOk={handleSubKeywordOk} onCancel={handleSubKeywordCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="subKeyword" 
           name="subKeyword" 
           placeholder="Enter sub keyword"
@@ -478,7 +478,7 @@ export default function Home() {
           {states.map((state) => (
             <span
               key={state}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {state}
               <Popconfirm
@@ -491,7 +491,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsStateOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -501,7 +501,7 @@ export default function Home() {
         <Modal title="Add new state" open={stateOpen} onOk={handleStateOk} onCancel={handleStateCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="state" 
           name="state" 
           placeholder="Enter state"
@@ -515,7 +515,7 @@ export default function Home() {
           {cities.map((city) => (
             <span
               key={city}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {city}
               <Popconfirm
@@ -528,7 +528,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsCityOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -538,7 +538,7 @@ export default function Home() {
         <Modal title="Add new city" open={cityOpen} onOk={handleCityOk} onCancel={handleCityCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="city" 
           name="city" 
           placeholder="Enter city"
@@ -552,7 +552,7 @@ export default function Home() {
           {addonOne.map((ad1) => (
             <span
               key={ad1}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {ad1}
               <Popconfirm
@@ -565,7 +565,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsAddonOneOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -575,7 +575,7 @@ export default function Home() {
         <Modal title="Add new addon" open={addonOneOpen} onOk={handleAddonOneOk} onCancel={handleAddonOneCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="addonOne" 
           name="addonOne" 
           placeholder="Enter addon"
@@ -589,7 +589,7 @@ export default function Home() {
           {addonTwo.map((ad2) => (
             <span
               key={ad2}
-              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+              className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             >
               {ad2}
               <Popconfirm
@@ -602,7 +602,7 @@ export default function Home() {
               </Popconfirm>
             </span>
           ))}
-          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center"
+          <button className="px-3 py-1 bg-gray-200 rounded-full text-sm flex flex-row items-center dark:bg-gray-800"
             onClick={() => setIsAddonTwoOpen(true)}
             >
             <PlusOutlined className="mr-2" />
@@ -612,7 +612,7 @@ export default function Home() {
         <Modal title="Add new addon" open={addonTwoOpen} onOk={handleAddonTwoOk} onCancel={handleAddonTwoCancel}>
           <input 
           type="text" 
-          className="w-full border border-gray-200 rounded p-2" 
+          className="w-full border border-gray-200 rounded p-2 bg-white" 
           id="addonTwo" 
           name="addonTwo" 
           placeholder="Enter addon"
@@ -625,7 +625,7 @@ export default function Home() {
       list={organaization} 
       setList={setOrganization}>
         {organaization.map((item) => (
-          <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center">
+          <div key={item.id} className="py-1 px-3 font-bold bg-gray-200 rounded-lg my-1 uppercase cursor-pointer flex flex-row items-center dark:bg-gray-800">
             <MenuOutlined className="mr-2"/>
             {item.name}
           </div>
@@ -633,18 +633,18 @@ export default function Home() {
       </ReactSortable>
 
 
-      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5"
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
       onClick={() => {generateKeywords()}}
       >Generate</button>
 
       <h2 className="text-3xl font-bold mt-10 mb-3">RESULTS: Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
       <section className="flex flex-col gap-4 py-3 md:py-5">
-        <table className="w-full border border-gray-200">
+        <table className="w-full border border-gray-200 dark:border-gray-700">
           <tbody>
             {generatedKeywords.map((keyword) => (
               <tr
                 key={keyword}
-                className="border-b border-gray-200"
+                className="border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
               >
                 <td className="px-3 py-1">{keyword}</td>
               </tr>
