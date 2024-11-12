@@ -15,7 +15,7 @@ export default function Contact() {
       // Send Email
       await axios.post("/api/resend", {
         email: "admin@nguyenpham.pro",
-        from: formData.get("Email"),
+        from: "bot@nguyenpham.pro",
         subject: "New contact from web!",
         content: `First Name: ${formData.get("firstName")}\n\n
 				  Last Name: ${formData.get("lastName")}\n\n
