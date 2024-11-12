@@ -6,6 +6,7 @@
 		"dev": "next dev --turbo",
 		"build": "next build",
 		"start": "next start",
+	    "format": "prettier 'app/**/*.{ts,json,tsx,css,js,scss,yaml}' --write && prettier 'components/**/*.{ts,json,tsx,css,js,scss,yaml}' --write",
 		"lint": "eslint . --ext .ts,.tsx -c .eslintrc.json --fix"
 	},
 	"dependencies": {

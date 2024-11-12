@@ -1,11 +1,11 @@
+import React, { Suspense } from "react";
 
-import React, { Suspense } from 'react';
-import Home from './components/home';
+import Home from "./components/home";
 
 export default function HomePage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Home />
-    </Suspense>
-  )
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<Home />
+		</Suspense>
+	);
 }
