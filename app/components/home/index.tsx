@@ -543,6 +543,11 @@ export default function Home() {
             id="keyword" 
             name="keyword" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormKeyword();
+              }
+            }} 
             />
           </Modal>
         </section>
@@ -581,6 +586,11 @@ export default function Home() {
             id="subKeyword" 
             name="subKeyword" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormSubKeyword();
+              }
+            }}
             />
           </Modal>
         </section>
@@ -619,6 +629,11 @@ export default function Home() {
             id="state" 
             name="state" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormState();
+              }
+            }}
             />
           </Modal>
         </section>
@@ -657,6 +672,11 @@ export default function Home() {
             id="city" 
             name="city" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormCity();
+              }
+            } }
             />
           </Modal>
         </section>
@@ -695,6 +715,11 @@ export default function Home() {
             id="addonOne" 
             name="addonOne" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormAddonOne();
+              }
+            }}
             />
           </Modal>
         </section>
@@ -733,6 +758,11 @@ export default function Home() {
             id="addonTwo" 
             name="addonTwo" 
             placeholder="Enter Keyword"
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                submitFormAddonTwo();
+              }
+            }}
             />
           </Modal>
         </section>
@@ -755,7 +785,22 @@ export default function Home() {
 
       <div id="results" className="hidden">
         <h2 className="text-3xl font-bold mt-10 mb-3">RESULTS: Generated Keywords {generatedKeywords.length? `(${generatedKeywords.length})`: ''}</h2>
-        <section className="flex flex-col gap-4 py-3 md:py-5">
+        <section className="flex flex-col gap-4">
+          <div className="flex space-x-2">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
+            onClick={() => {doAgain()}}
+            >Do Again</button>
+            <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
+            onClick={() => {exportCSV()}}
+            >Export</button>
+            {/* <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
+            onClick={() => {exportWordPressXML()}}
+            >Export WordPress XML</button> */}
+            <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
+            onClick={() => {startOver()}}
+            >Start Over</button>
+          </div>
+          <div className="py-3">
           <table className="w-full border border-gray-200 dark:border-gray-700">
             <tbody>
               {generatedKeywords.map((keyword) => (
@@ -768,19 +813,6 @@ export default function Home() {
               ))}
             </tbody>
           </table>
-          <div className="flex space-x-2">
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-blue-700"
-            onClick={() => {doAgain()}}
-            >Do Again</button>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
-            onClick={() => {exportCSV()}}
-            >Export</button>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-green-700"
-            onClick={() => {exportWordPressXML()}}
-            >Export WordPress XML</button>
-            <button className="bg-red-500 text-white px-4 py-2 rounded-lg mt-5 dark:bg-red-700"
-            onClick={() => {startOver()}}
-            >Start Over</button>
           </div>
         </section>
       </div>
