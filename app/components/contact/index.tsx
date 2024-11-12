@@ -14,7 +14,7 @@ export default function Contact() {
     try {
       // Send Email
       await axios.post("/api/resend", {
-        email: "baonguyenyam@gmail.com",
+        email: "admin@nguyenpham.pro",
         from: formData.get("Email"),
         subject: "New contact from web!",
         content: `First Name: ${formData.get("firstName")}\n\n
@@ -89,6 +89,21 @@ export default function Contact() {
               type="text"
             />
           </div>
+        </div>
+
+        <div className="mb-5">
+          <label
+            className="block mb-2 font-medium text-sm"
+            htmlFor="Description"
+          >
+            Description
+          </label>
+          <textarea
+            className="appearance-none border border-gray-400 py-1 px-2 text-sm font-light w-[100%] rounded-none outline-none focus:outline-none focus:ring-2"
+            id="Description"
+            name="Description"
+            rows={5}
+          ></textarea>
         </div>
 
         <div className="row mb-10">
