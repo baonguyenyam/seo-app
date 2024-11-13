@@ -30,7 +30,7 @@ export default function Contact() {
 	}
 
 	return (
-		<div>
+		<div className="max-w-2xl mx-auto">
 			<h1 className={title()}>Contact</h1>
 			<form className="w-full mx-auto mt-10 text-left" onSubmit={handleSubscribe}>
 				<div className="mb-5 grid sm:grid-cols-2 gap-10">
