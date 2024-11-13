@@ -1,0 +1,26 @@
+{
+    "pedicure":{
+       "name":"Pedicure",
+       "img":"Pedicure",
+       "items":[
+          {
+             "id":1,
+             "name":"Kids Pedicure",
+             "img":"Pedicure",
+             "price":25
+          }
+       ]
+    },
+    "manicure":{
+       "name":"Manicure",
+       "img":"Pedicure",
+       "items":[
+          {
+             "id":2,
+             "name":"Kids Manicure",
+             "img":"Pedicure",
+             "price":25
+          }
+       ]
+    }
+}
